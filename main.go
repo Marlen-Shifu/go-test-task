@@ -20,7 +20,7 @@ type Payment struct {
 	Category int `json:"category"`
   }
   
-  type Category struct {
+type Category struct {
 	ID    string `json:"id"`
 	Title string `json:"title"`
   }
@@ -119,7 +119,7 @@ func updateCategory(w http.ResponseWriter, r *http.Request) {
     for index, item := range categories {
         if item.ID == params["id"] {
             categories = append(categories[:index], categories[index+1:]...)
-            var category Payment
+            var category Category
             _ = json.NewDecoder(r.Body).Decode(&category)
             category.ID = params["id"]
             categories = append(categories, category) 
@@ -154,9 +154,9 @@ func deleteCategory(w http.ResponseWriter, r *http.Request) {
 func main() {
     r := mux.NewRouter()
 
-	categories = append(categories, Category{id: 1, Title: "Category1"})
+	categories = append(categories, Category{ID: "1", Title: "Category1"})
 
-	categories = append(categories, Category{id: 2, Title: "Category2"})
+	categories = append(categories, Category{ID: "2", Title: "Category2"})
 
     payments = append(payments, Payment{
 		ID: "1", 
@@ -167,8 +167,6 @@ func main() {
 		Comment: "First income",
 		Category: 1,
 	})
-
-	category2 := Category{Title: "Category2"}
 
     payments = append(payments, Payment{
 		ID: "2", 
