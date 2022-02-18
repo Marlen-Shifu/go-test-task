@@ -11,7 +11,7 @@ import (
 )
 
 type Payment struct {
-	ID      int `json:"id"`
+	ID      string `json:"id"`
 	Title   string `json:"title"`
 	Cost	int    `json: "cost"`
 	Date	time.Time    `json: "date"`
@@ -21,7 +21,7 @@ type Payment struct {
   }
   
   type Category struct {
-	ID    int `json:"id"`
+	ID    string `json:"id"`
 	Title string `json:"title"`
   }
 
